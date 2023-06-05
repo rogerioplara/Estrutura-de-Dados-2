@@ -1,0 +1,140 @@
+ESTRUTURA DE DADOS 2
+
+Unidade I
+    árvores;
+    árvores binárias;
+    árvore estritamente binárias;
+    árvore binária completa;
+    árvores binárias em C;
+
+Árvores são um caso particular de grafos:
+    grafo conexo T em que existe um e somente um caminho entre qualquer par de vértices de T;
+Um subgrafo acíclico de um grafo é determinado subárvore;
+
+    São estruturas eficientes para realizar pesquisa:
+        - acesso direto;
+        - acesso sequencial;
+        - fácil inserção/remoção de dados;
+        - boa taxa de utilização de memória;
+        - útil para memórias primária(ram) e secundária(hd);
+        - custo benefício considerando os atributos anteriores;
+        - hash table x árvores (pesquisa vs inserção);
+
+Árvores binárias
+    Conjunto finito de elementos T={R,E,D};
+    Pode ser vazio;
+    Três subconjuntos disjuntos:
+        - Raiz (R);
+        - Subárvore binária esquerda (E);
+        - Subárvore binária deireita (D);
+
+    Exemplo:
+        Ta = {Ra, Ea, Da}
+        Ra = {A} -> vértice A
+        Ea = Tb 
+        Da = Tc
+
+Alguns termos utilizados para os vértices:
+    Raiz é o nó inicial, não possui um nó pai;
+    Considere o nó v com uma subárvore cusa raiz é w:
+        diz-se que v é o pai de w;
+        diz-se que w é o filho de v;
+    Dois nós que possuem o mesmo pai são ditos irmãos;
+    Um nó sem filhos é chamado de folha;
+    Ancestral e descendente;
+    Caminho na árvore: descer e subir;
+
+Nível de um nó
+    - nível da raiz é No = 0
+    - nível de um nó F é igual ao nível de seu pai P + 1;
+        Nf = Np+1
+
+Altura da árvore
+    - é igual ao valor do maior nível de todos os nós;
+
+Árvores estritamente Binárias
+    estrutura nó:
+        dado, pai, esquerda, direita;
+    
+    Definição: todo nó não folha, deve conter dois filhos;
+    número de nós = (2*f)-1
+    Onde f é o número de folhas;
+
+Árvore binária completa:
+    É, necessariamente, uma "Estritamente binária";
+    Todos os nós folha estão no mesmo nível;
+    Nó não folha não pode possuir subárvore vazia;
+
+Implementação de árvores binárias:
+    Estática - sem registros, com registros;
+    Dinâmica - utiliza registros com ponteiros;
+
+Busca em árvores binárias:
+    Arvore binária ordenada;
+    Arvore balanceada;
+        - nós distribuídos, uniformemente, nos níveis;
+        - tentavia de tornar "binária completa";
+        - algoritmo de balanceamento;
+            arvore AVL;
+
+Arvore binária estática:
+    Operação de adição de nó simples torna o vetor bagunçado;
+    Utiliza apenas um vetor de inteiros
+        - Não necessita de estrutura nó (struct em C);
+    Solução: Fórmula para determinar o índice dos nós (considerando posição inicial igual a 0);
+        Fe = 2*p+1
+        Fd = 2*p+2
+    Filho esquerdo = 2 * índice pai + 1
+    Filho direito = 2 * índice pai + 2
+
+Arvore binaria em vetor estático:
+    Estrutura (struct em C):
+        - referência a posição do filho esquerdo;
+        - referência a posição do filho direito;
+        - referencia ao no pai;
+        - valor ou rotulo;
+
+Arvore binária dinâmica:
+    Mesma estrutura recém citada;
+    Cada nó da struct é alocado dinamicamente;
+
+Estrutura nó:
+    // estrutura
+    typedef struct str_no {
+        char dado;
+        str_no *esq;
+        str_no *dir;
+        str_no *pai;
+    } str_no;
+
+Operação de inserção pseudocódigo
+
+InsereNoArvore(nó pai, int valor, lado){
+    Cria-se dinamicamente, um novo nó F;
+    Inicializa-se F zerando seus campos;
+    F.val <- valor
+    F.pai <- pai
+    Se lado = esquerda então:
+        pai.esq <- F
+    Se não, se lado = direita então:
+        pai.dir <- F
+}
+
+inserção do nó raiz:
+1. cria-se o nó dinamicamente;
+2. inicializa-se o nó;
+3. nó.val <- A
+
+inserção do nó B, filho esquerdo de A:
+1. cria-se o nó dinamicamente;
+2. inicializa-se o nó;
+3. nó.val <- B;
+4. nó.pai <- pai; (endereço de A)
+5. pai.esq <- nó; (endereço de B)
+
+inserção do nó C, filho direito de A:
+1. cria-se o nó dinamicamente; (malloc)
+2. inicializa-se o nó; (atribui NULL a seus ponteiros)
+3. nó.val <- C; (insere o valor do nó)
+4. nó.pai <- pai; (endereço de A - aponta o nó pai para seu filho)
+5. pai.dir <- nó; (endereço de C - determina o nó pai)
