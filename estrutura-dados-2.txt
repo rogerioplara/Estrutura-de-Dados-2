@@ -138,3 +138,71 @@ inserção do nó C, filho direito de A:
 3. nó.val <- C; (insere o valor do nó)
 4. nó.pai <- pai; (endereço de A - aponta o nó pai para seu filho)
 5. pai.dir <- nó; (endereço de C - determina o nó pai)
+
+-----------------------------------
+
+Caminhamento de Árvores binárias;
+
+    - Percurso Pré-ordem;
+    - Percurso Em-ordem;
+    - Percurso Pós-ordem;
+    - Busca em árvores binárias;
+    - Árvores AVL;
+
+Levam em consideração a ordem em que os elementos são visitados:
+    Raiz, subárvore esquerda, subárvore direita;
+
+    - Pré-ordem: Primeiro a raiz
+    - Em-ordem: Primeiro a subarvore esquerda, depois a raiz, depois a direita;
+    - Pós-ordem: esquerda, direita depois raiz;
+
+## Pré-ordem:
+    Raiz da árvore é o primeiro elemento a ser visitado;
+
+1. Visita-se a raiz;
+2. Efetua-se o percurso pré-ordem na subárvore esquerda;
+3. Efetua-se o percurso pré-ordem na subárvore direita;
+
+Em C:
+
+void preOrdem(No* raiz){
+    if(raiz){
+        printf("%d \t", raiz->dado);
+        preOrdem(raiz->esq);
+        preOrdem(raiz->dir);
+    }
+}
+
+## Em-ordem (interfixado)
+    A raiz é visitada somente após percorrer toda a subárvore esquerda;
+    O percurso segue dos nós da subárvore esquerda, passando pela raiz e em seguida os nós da subárvore direita;
+
+1. Efetua-se o percurso em-ordem na subárvore esquerda;
+2. Visita-se a Raiz;
+3. Efetua-se o percurso em-ordem na subárvore direita;
+
+Em C:
+
+void emOrdem(No* raiz){
+    if(raiz){
+        emOrdem(raiz->esq);
+        printf("%d \t", raiz->dado);
+        emOrdem(raiz->dir);
+    }
+}
+
+## Pós-ordem (pós fixado)
+    A raiz é visitada por último. Visita-se primeiro a subárvore esquerda, depois a direita e, por fim, a raiz;
+    O percurso segue dos nós mais profudos até a raiz da árvore, a partir dos nós da subárvores da esquerda para os da direita;
+
+1. Efetua-se o percurso pós-ordem na subárvore esquerda;
+2. Efetua-se o percurso pós ordem na subárvore direita;
+3. Visita-se a raiz;
+
+void posOrdem(No* raiz){
+    if(raiz){
+        posOrdem(raiz->esq);
+        posOrdem(raiz->dir);
+        printf("%d \t", raiz->dado);
+    }
+}
