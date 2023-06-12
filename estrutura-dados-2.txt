@@ -206,3 +206,51 @@ void posOrdem(No* raiz){
         printf("%d \t", raiz->dado);
     }
 }
+
+Aplicações:
+    - Árvore de análise semântica;
+    - Auxiliar e avaliar expressões;
+    - Auxílio na avaliação de linguagens formais;
+        Código-fonte
+
+Árvores binárias de Busca
+
+    Como poderíamos realizar uma busca utilizando uma árvore?
+        - busca em profundidade?
+        - busca em largura?
+    Algoritmos muito "genéricos";
+    Procura-se de nó em nó, até encontrar um nó;
+
+    Solução:
+        Tente "podar" nós;
+        Cria-se uma regra para inserção de nós;
+        A árvore passa a ser "ordenada";
+
+Balanceamento de árvores
+
+    Considere o seguinte conjunto de dados:
+        2 5 10 17 25 32
+    Inserindo os dados, ordenadamente, temos a seguinte árvore;
+    
+    2->5->10->17->25->32 (todos para a direita)
+    
+    Praticamente uma lista encadeada, desse modo a busca se torna ineficiente;
+
+Algoritmo de Adelson-Velskii e Landis (AVL)
+
+    - fator de balanceamento (Fb) baseado na altura das subárvores do nó em questão:
+    - He - altura subárvore esquerda;
+    - Hd - altura subárvore direita;
+
+    Fb = He - Hd
+
+    Nenhuma subárvore deve ter fator de balanceamento maior ou igual a 2, em valor absoluto;
+
+    Fb da raiz diferente de -1, 0 ou 1: Balancear!
+
+Rotação simples à esquerda
+    Balanceamento quebrado por inserção à direita do filho direito;
+
+Rotação simples à direita
+    Balanceamento quebrado por inserção à esquerda do filho esquerdo;
+
