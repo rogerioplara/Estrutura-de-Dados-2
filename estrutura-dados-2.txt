@@ -254,3 +254,91 @@ Rotação simples à esquerda
 Rotação simples à direita
     Balanceamento quebrado por inserção à esquerda do filho esquerdo;
 
+Rotações duplas
+    Quando rotações simples não funcionam;
+    Balanceamento quebrado por inserção na subárvore da esquerda do filho à direita;
+
+Quando rotacionar:
+
+    Inserção a direita do filho a direita -> Rotacionar a esquerda;
+    Inserção a esquerda do filho a esquerda -> Rotacionar a direita;
+    Inserção na subarvore esquerda do filho a direita -> rotação dupla direita - esquerda;
+    Inserção na subarvore direita do filho a esquerda -> rotação dupla esquerda - direita;
+
+Unidade III
+    Algoritmos e técnica de ordenação de arranjos:
+
+        Definição: é o processo de rearranjar um conjunto de objetos em ordem ascendente ou decrescente;
+    
+        Principal objetivo: facilitar a recuperação de um elemento do conjunto ordenado (busca);
+
+    Objeto de trabalho: 
+        arquivo, tabela, vetor, arranjo, conjunto;
+
+    Chave - elemento que controla a ordenação;
+
+    Regra de ordenação:
+        - numérica;
+        - alfabética;
+
+    Estabilidade:
+        - elementos iguais não mudam de ordem;
+        - útil para ordenar mais deum índice em sequencia. Ex: baralho, lista de nomes;
+
+    Aspectos para a escolha de um algoritmo:
+        - depende do tamanho da entrada;
+            vetor de tamanho n;
+        - tempo gasto para ordenar;
+            número de comparações, trocas;
+        - quantidade de memória auxiliar;
+    
+    Eficiência depende da distribuição dos dados:
+        - melhor caso, pior caso e caso médio;
+        - vetor ordenado, parcialmente ordenado, não ordenado;
+
+BubbleSort
+    Também conhecido como técnica de ordenação por flutuação;
+    
+    Simples implementação;
+    
+    Alto custo computacional;
+    
+    Estável;
+    
+    Compara todos os elementos entre si;
+    
+    Ineficiente, independentemente da distribuição;
+        - ordenado;
+        - parcialmente ordenado;
+        - não ordenado;
+    
+Bubblesort(arranjo A)
+    Para i <- 0 até comprimento[A] - 1 faça
+        Para j <- i+1 até comprimento[A]faça
+            Se A[i] > A[j] então
+                troca A[i] <-> A[j]
+
+SelectionSort
+    Também conhecido como técnica de ordenação por seleção;
+
+    Simples implementação;
+
+    Alto custo computacional;
+
+    Estável;
+
+    Compara todos os elementos entre si;
+
+    Ineficiente, independentemente da distribuição;
+        - ordenado;
+        - parcialmente ordenado;
+        - não ordenado;
+
+Selectionsort(arranjo A)
+    Para i <- 0 até comprimento[A] - 1 faça
+        min <- i
+        Para j <- i + 1 até comprimento [A] faça
+            Se A[j] < A[min] então
+                min <- j
+            Se i != min então
+                troca A[i] <-> A[min]
